@@ -1,0 +1,7 @@
+fragment todoFragment on TodoType{
+    id
+    title
+    description
+    completed
+    UserId
+}

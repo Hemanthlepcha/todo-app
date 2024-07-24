@@ -1,0 +1,7 @@
+mutation createTodo(
+  $input: TodoInputType!
+) {
+  createTodo(input: $input) {
+    ...todoFragment
+  }
+}

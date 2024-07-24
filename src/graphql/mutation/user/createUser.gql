@@ -1,0 +1,10 @@
+mutation createUser(
+  $firstName: String!
+  $lastName: String!
+  $password: String!
+) {
+  createUser(firstName: $firstName, lastName: $lastName, password: $password) {
+    ...userFragment
+    #returns the fields defined in userFragment
+  }
+}

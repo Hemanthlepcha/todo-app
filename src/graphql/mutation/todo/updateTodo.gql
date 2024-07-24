@@ -1,0 +1,5 @@
+mutation updateTodo($input: updateInput!) {
+  updateTodo(input: $input) {
+    ...todoFragment
+  }
+}

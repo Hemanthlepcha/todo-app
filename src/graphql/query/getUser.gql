@@ -1,0 +1,3 @@
+query signIn($firstName: String!, $password: String!) {
+  signIn(firstName: $firstName, password: $password)
+}
