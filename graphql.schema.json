@@ -59,6 +59,15 @@ export type RootQueryTypeGetTodoArgs = {
 };
 
 
+export type RootQueryTypeGetTodosArgs = {
+  after?: InputMaybe<Scalars['String']['input']>;
+  before?: InputMaybe<Scalars['String']['input']>;
+  filter?: InputMaybe<TodoFilterType>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
 export type RootQueryTypeGetUserArgs = {
   id: Scalars['Int']['input'];
 };
@@ -69,19 +78,24 @@ export type RootQueryTypeSignInArgs = {
   password?: InputMaybe<Scalars['String']['input']>;
 };
 
+export type TodoFilterType = {
+  completed?: InputMaybe<Scalars['Boolean']['input']>;
+  query?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type TodoInputType = {
   completed?: InputMaybe<Scalars['Boolean']['input']>;
   description: Scalars['String']['input'];
-  id?: InputMaybe<Scalars['ID']['input']>;
+  id: Scalars['ID']['input'];
   title: Scalars['String']['input'];
 };
 
 export type TodoType = {
   __typename?: 'TodoType';
-  UserId?: Maybe<Scalars['ID']['output']>;
-  completed?: Maybe<Scalars['Boolean']['output']>;
+  UserId: Scalars['ID']['output'];
+  completed: Scalars['Boolean']['output'];
   description: Scalars['String']['output'];
-  id?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
   title: Scalars['String']['output'];
 };
 
@@ -99,7 +113,7 @@ export type UpdateInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TodoFragmentFragment = { __typename?: 'TodoType', id?: string | null, title: string, description: string, completed?: boolean | null, UserId?: string | null };
+export type TodoFragmentFragment = { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string };
 
 export type UserFragmentFragment = { __typename?: 'UserType', firstName?: string | null, lastName?: string | null, password?: string | null };
 
@@ -108,7 +122,7 @@ export type CreateTodoMutationVariables = Exact<{
 }>;
 
 
-export type CreateTodoMutation = { __typename?: 'RootMutation', createTodo?: { __typename?: 'TodoType', id?: string | null, title: string, description: string, completed?: boolean | null, UserId?: string | null } | null };
+export type CreateTodoMutation = { __typename?: 'RootMutation', createTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null };
 
 export type DeleteTodoMutationVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -122,7 +136,7 @@ export type UpdateTodoMutationVariables = Exact<{
 }>;
 
 
-export type UpdateTodoMutation = { __typename?: 'RootMutation', updateTodo?: { __typename?: 'TodoType', id?: string | null, title: string, description: string, completed?: boolean | null, UserId?: string | null } | null };
+export type UpdateTodoMutation = { __typename?: 'RootMutation', updateTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null };
 
 export type CreateUserMutationVariables = Exact<{
   firstName: Scalars['String']['input'];
@@ -136,7 +150,7 @@ export type CreateUserMutation = { __typename?: 'RootMutation', createUser?: { _
 export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTodosQuery = { __typename?: 'RootQueryType', getTodos?: Array<{ __typename?: 'TodoType', id?: string | null, title: string, description: string, completed?: boolean | null, UserId?: string | null } | null> | null };
+export type GetTodosQuery = { __typename?: 'RootQueryType', getTodos?: Array<{ __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null> | null };
 
 export type SignInQueryVariables = Exact<{
   firstName: Scalars['String']['input'];

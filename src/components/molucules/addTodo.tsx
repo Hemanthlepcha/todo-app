@@ -1,32 +1,45 @@
-import React, { useState } from "react";
+import React from "react";
 import Input from "../atoms/inputs/input";
-import CRUDBtn from "../atoms/buttons/CrudBtn";
+import CrudBtn from "../atoms/buttons/CrudBtn";
 
-const TodoInput: React.FC = () => {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+interface Props {
+  titleValue: string;
+  disValue: string;
+  onTitleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDisChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onButtonClick?: () => void;
+}
+const TodoInput: React.FC<Props> = ({
+  titleValue,
+  onTitleChange,
+  disValue,
+  onDisChange,
+  onButtonClick,
+}) => {
+  // const [title, setTitle] = useState("");
+  // const [description, setDescription] = useState("");
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
-  };
+  // const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setTitle(e.target.value);
+  // };
 
-  const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDescription(e.target.value);
-  };
+  // const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setDescription(e.target.value);
+  // };
 
-  const handleAddTodo = () => {
-    if (title.trim() !== "" && description.trim() !== "") {
-      const newTodo = {
-        title,
-        description,
-        completed: false,
-      };
-      console.log("Add todo:", newTodo);
-      // Clear the inputs after adding
-      setTitle("");
-      setDescription("");
-    }
-  };
+  // const handleAddTodo = () => {
+  //   if (title.trim() !== "" && description.trim() !== "") {
+  //     const newTodo = {
+  //       title,
+  //       description,
+  //       completed: false,
+  //     };
+  //     console.log("Add todo:", newTodo);
+  //     // Clear the inputs after adding
+  //     setTitle("");
+  //     setDescription("");
+  //   }
+  // };
 
   return (
     <div>
@@ -34,8 +47,8 @@ const TodoInput: React.FC = () => {
         name="title"
         type="text"
         placeholder="Enter the title"
-        value={title}
-        onChange={handleTitleChange}
+        value={titleValue}
+        onChange={onTitleChange}
         style={{
           height: "2rem",
           borderTopLeftRadius: "8px",
@@ -49,8 +62,8 @@ const TodoInput: React.FC = () => {
         name="description"
         type="text"
         placeholder="Enter the description"
-        value={description}
-        onChange={handleDescriptionChange}
+        value={disValue}
+        onChange={onDisChange}
         style={{
           height: "2rem",
 
@@ -60,7 +73,7 @@ const TodoInput: React.FC = () => {
           marginTop: "8px",
         }}
       />
-      <CRUDBtn
+      <CrudBtn
         style={{
           background: "#00C9A7",
           height: "2.3rem",
@@ -71,8 +84,9 @@ const TodoInput: React.FC = () => {
           marginTop: "8px",
         }}
         label="Add"
-        onClick={handleAddTodo}
         icon="add"
+        type="submit"
+        onClick={onButtonClick}
       />
     </div>
   );

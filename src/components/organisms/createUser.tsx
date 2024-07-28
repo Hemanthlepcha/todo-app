@@ -7,7 +7,8 @@ const MyComponent = () => {
     try {
       await setUser({ firstName: "hemanth", password: "1234" });
       const user = getCurrentUser();
-     
+      // console.log(user);
+
       console.log("Signed in user:", user);
     } catch (error) {
       console.error("Sign in error:", error);
@@ -15,9 +16,13 @@ const MyComponent = () => {
   };
 
   const handleSignUp = async () => {
-    console.log("click")
+    console.log("click");
     try {
-      await createUser({ firstName: "jigme", lastName:"tenzin", password: "jigme" });
+      await createUser({
+        firstName: "jigme",
+        lastName: "tenzin",
+        password: "jigme",
+      });
       console.log("User created successfully");
     } catch (error) {
       console.error("Sign up error:", error);
