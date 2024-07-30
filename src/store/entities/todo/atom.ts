@@ -11,7 +11,11 @@ export const initialState = (): todoType => ({
   UserId: "",
 });
 
-export const { state: todoState, listState: todosState } = createState({
+export const {
+  state: todoState,
+  listState: todosState,
+  idsState: todoIdsState,
+} = createState({
   key,
   initialState,
 });
@@ -22,6 +26,6 @@ export const todoOfUser = selectorFamily<todoType[], string>({
     (userId) =>
     ({ get }) => {
       const todo = get(todosState);
-      return todo.filter((todo) => todo.UserId === userId);
+      return todo.filter((todo) => todo.id === userId);
     },
 });

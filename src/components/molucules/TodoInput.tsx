@@ -16,31 +16,6 @@ const TodoInput: React.FC<Props> = ({
   onDisChange,
   onButtonClick,
 }) => {
-  // const [title, setTitle] = useState("");
-  // const [description, setDescription] = useState("");
-
-  // const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setTitle(e.target.value);
-  // };
-
-  // const handleDescriptionChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setDescription(e.target.value);
-  // };
-
-  // const handleAddTodo = () => {
-  //   if (title.trim() !== "" && description.trim() !== "") {
-  //     const newTodo = {
-  //       title,
-  //       description,
-  //       completed: false,
-  //     };
-  //     console.log("Add todo:", newTodo);
-  //     // Clear the inputs after adding
-  //     setTitle("");
-  //     setDescription("");
-  //   }
-  // };
-
   return (
     <div>
       <Input
@@ -78,8 +53,9 @@ const TodoInput: React.FC<Props> = ({
           background: "#00C9A7",
           height: "2.3rem",
           borderColor: "#00C9A7",
-          borderStartEndRadius: "8px",
-          borderEndEndRadius: "8px",
+          borderTopLeftRadius: "0",
+          borderEndStartRadius: "0",
+          marginLeft: "0",
           cursor: "pointer",
           marginTop: "8px",
         }}

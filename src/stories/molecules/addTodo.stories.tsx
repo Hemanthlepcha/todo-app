@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import TodoInput from '../../components/molucules/addTodo';
+import TodoInput from "../../components/molucules/TodoInput";
 const meta: Meta<typeof TodoInput> = {
-  title: 'molecules/TodoInput',
+  title: "molecules/TodoInput",
   component: TodoInput,
-  tags:['autodocs']
+  tags: ["autodocs"],
 };
 
 export default meta;
@@ -11,5 +11,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {}
+  args: {},
 };

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import contentPage from "../../components/organisms/content";
+import contentPage from "../../components/organisms/ContentPage";
 const meta: Meta<typeof contentPage> = {
   title: "organisms/contentPage",
   component: contentPage,

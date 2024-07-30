@@ -32,6 +32,7 @@ const AuthPane: React.FC<Props> = () => {
 
   function handleClick() {
     navigate("/home");
+    window.location.reload();
   }
   function singUpRoute() {
     navigate("/");
@@ -95,23 +96,35 @@ const AuthPane: React.FC<Props> = () => {
 
   return (
     <div style={{ marginTop: "5px" }}>
-      <AuthBtn
-        label="Log In"
-        style={{ padding: "8px", borderRadius: "15px" }}
-        onClick={openLoginModal}
-      />
-      <AuthBtn
-        label="Sign Up"
+      <div
         style={{
-          background: "#00C0FF",
-          color: "white",
-          padding: "8px",
-          marginLeft: "1rem",
-          marginRight: "1rem",
-          borderRadius: "15px",
+          marginLeft: "54rem",
         }}
-        onClick={openSignUpModal}
-      />
+      >
+        <AuthBtn
+          label="Log In"
+          style={{
+            padding: "8px",
+            borderRadius: "15px",
+            height: "37px",
+            color: "white",
+          }}
+          onClick={openLoginModal}
+        />
+        <AuthBtn
+          label="Sign Up"
+          style={{
+            background: "#00C0FF",
+            color: "white",
+            padding: "8px",
+            marginLeft: "1rem",
+            marginRight: "1rem",
+            borderRadius: "15px",
+            height: "37px",
+          }}
+          onClick={openSignUpModal}
+        />
+      </div>
 
       {/* Log In Modal */}
       <ReactModal

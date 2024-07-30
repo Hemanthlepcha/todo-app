@@ -1,0 +1,9 @@
+.edit-todo {
+  padding-bottom: 5px;
+  font-size: 16px;
+  flex-grow: 1;
+  font-style: italic;
+  font-size-adjust: 12px;
+  margin-left: -18em;
+  align-items: center;
+}
