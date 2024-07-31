@@ -11,5 +11,4 @@ generates:
       withHooks: true
   ./graphql.schema.json:
     plugins:
-      - "typescript"
-      - "typescript-operations"
+      - "introspection"

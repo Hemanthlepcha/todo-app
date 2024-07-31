@@ -12,6 +12,7 @@ export const useGetTodos = () => {
   const getTodos = useRecoilCallback(
     () => async () => {
       const { data, errors } = await getAllTodoRefetch();
+      console.log("data", data);
       if (errors) {
         throw new Error(`${errors}`);
       }

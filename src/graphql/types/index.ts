@@ -23,6 +23,7 @@ export type RootMutation = {
   createUser?: Maybe<UserType>;
   deleteTodo?: Maybe<Scalars['Boolean']['output']>;
   updateTodo?: Maybe<TodoType>;
+  updateTodoOrder?: Maybe<Scalars['Boolean']['output']>;
 };
 
 
@@ -45,6 +46,12 @@ export type RootMutationDeleteTodoArgs = {
 
 export type RootMutationUpdateTodoArgs = {
   input: UpdateInput;
+};
+
+
+export type RootMutationUpdateTodoOrderArgs = {
+  id?: InputMaybe<Scalars['ID']['input']>;
+  order?: InputMaybe<Scalars['Int']['input']>;
 };
 
 export type RootQueryType = {
@@ -99,6 +106,7 @@ export type TodoType = {
   completed: Scalars['Boolean']['output'];
   description: Scalars['String']['output'];
   id: Scalars['String']['output'];
+  order: Scalars['Int']['output'];
   title: Scalars['String']['output'];
 };
 
@@ -116,7 +124,7 @@ export type UpdateInput = {
   title?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type TodoFragmentFragment = { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string };
+export type TodoFragmentFragment = { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string, order: number };
 
 export type UserFragmentFragment = { __typename?: 'UserType', firstName?: string | null, lastName?: string | null, password?: string | null };
 
@@ -125,7 +133,7 @@ export type CreateTodoMutationVariables = Exact<{
 }>;
 
 
-export type CreateTodoMutation = { __typename?: 'RootMutation', createTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null };
+export type CreateTodoMutation = { __typename?: 'RootMutation', createTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string, order: number } | null };
 
 export type DeleteTodoMutationVariables = Exact<{
   id: Scalars['ID']['input'];
@@ -134,12 +142,20 @@ export type DeleteTodoMutationVariables = Exact<{
 
 export type DeleteTodoMutation = { __typename?: 'RootMutation', deleteTodo?: boolean | null };
 
+export type UpdateTodoOrderMutationVariables = Exact<{
+  id: Scalars['ID']['input'];
+  order: Scalars['Int']['input'];
+}>;
+
+
+export type UpdateTodoOrderMutation = { __typename?: 'RootMutation', updateTodoOrder?: boolean | null };
+
 export type UpdateTodoMutationVariables = Exact<{
   input: UpdateInput;
 }>;
 
 
-export type UpdateTodoMutation = { __typename?: 'RootMutation', updateTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null };
+export type UpdateTodoMutation = { __typename?: 'RootMutation', updateTodo?: { __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string, order: number } | null };
 
 export type CreateUserMutationVariables = Exact<{
   firstName: Scalars['String']['input'];
@@ -153,7 +169,7 @@ export type CreateUserMutation = { __typename?: 'RootMutation', createUser?: { _
 export type GetTodosQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetTodosQuery = { __typename?: 'RootQueryType', getTodos?: Array<{ __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string } | null> | null };
+export type GetTodosQuery = { __typename?: 'RootQueryType', getTodos?: Array<{ __typename?: 'TodoType', id: string, title: string, description: string, completed: boolean, UserId: string, order: number } | null> | null };
 
 export type SignInQueryVariables = Exact<{
   firstName: Scalars['String']['input'];
@@ -170,6 +186,7 @@ export const TodoFragmentFragmentDoc = gql`
   description
   completed
   UserId
+  order
 }
     `;
 export const UserFragmentFragmentDoc = gql`
@@ -243,6 +260,38 @@ export function useDeleteTodoMutation(baseOptions?: Apollo.MutationHookOptions<D
 export type DeleteTodoMutationHookResult = ReturnType<typeof useDeleteTodoMutation>;
 export type DeleteTodoMutationResult = Apollo.MutationResult<DeleteTodoMutation>;
 export type DeleteTodoMutationOptions = Apollo.BaseMutationOptions<DeleteTodoMutation, DeleteTodoMutationVariables>;
+export const UpdateTodoOrderDocument = gql`
+    mutation UpdateTodoOrder($id: ID!, $order: Int!) {
+  updateTodoOrder(id: $id, order: $order)
+}
+    `;
+export type UpdateTodoOrderMutationFn = Apollo.MutationFunction<UpdateTodoOrderMutation, UpdateTodoOrderMutationVariables>;
+
+/**
+ * __useUpdateTodoOrderMutation__
+ *
+ * To run a mutation, you first call `useUpdateTodoOrderMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useUpdateTodoOrderMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [updateTodoOrderMutation, { data, loading, error }] = useUpdateTodoOrderMutation({
+ *   variables: {
+ *      id: // value for 'id'
+ *      order: // value for 'order'
+ *   },
+ * });
+ */
+export function useUpdateTodoOrderMutation(baseOptions?: Apollo.MutationHookOptions<UpdateTodoOrderMutation, UpdateTodoOrderMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<UpdateTodoOrderMutation, UpdateTodoOrderMutationVariables>(UpdateTodoOrderDocument, options);
+      }
+export type UpdateTodoOrderMutationHookResult = ReturnType<typeof useUpdateTodoOrderMutation>;
+export type UpdateTodoOrderMutationResult = Apollo.MutationResult<UpdateTodoOrderMutation>;
+export type UpdateTodoOrderMutationOptions = Apollo.BaseMutationOptions<UpdateTodoOrderMutation, UpdateTodoOrderMutationVariables>;
 export const UpdateTodoDocument = gql`
     mutation updateTodo($input: updateInput!) {
   updateTodo(input: $input) {

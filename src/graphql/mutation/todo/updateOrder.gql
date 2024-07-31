@@ -1,0 +1,3 @@
+mutation UpdateTodoOrder($id: ID!, $order: Int!) {
+  updateTodoOrder(id: $id, order: $order)
+}

@@ -1,7 +1,8 @@
-fragment todoFragment on TodoType{
-    id
-    title
-    description
-    completed
-    UserId
+fragment todoFragment on TodoType {
+  id
+  title
+  description
+  completed
+  UserId
+  order
 }
