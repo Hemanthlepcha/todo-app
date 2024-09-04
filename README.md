@@ -1,6 +1,5 @@
 # React + TypeScript + Vite
-
-Beginner todo frontend project using:
+Todo-App(CRUD) frontend with draggable functionality using:
 ## Reactjs
 ## TypeScript
 ## GraphQL API
